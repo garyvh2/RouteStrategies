@@ -1,0 +1,58 @@
+{
+  "/": {
+    "src/app/demo/my-app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/app/demo/common/my-view1/my-view1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+  "/view1": {
+    "src/app/demo/my-app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/app/demo/common/my-view1/my-view1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+  "/view2": {
+    "src/app/demo/my-app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/app/demo/counter/my-view2.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+  "/view3": {
+    "src/app/demo/my-app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/app/demo/shop/my-view3/my-view3.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    }
+  }
+}
