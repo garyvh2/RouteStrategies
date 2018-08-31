@@ -8,28 +8,18 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import "./app.module";
-
 import {
     LitElement,
     html
 } from "@polymer/lit-element";
 
-import {
-    connect
-} from "pwa-helpers/connect-mixin";
-
-// This element is connected to the Redux store.
-import {
-    store
-} from "./app.store";
-
-import "./app.router";
-
-class MainApp extends connect(store)(LitElement) {
-    _render() {
-        // Anything that's related to rendering should be done in here.
+// This is a reusable element. It is not connected to the store. You can
+// imagine that it could just as well be a third-party element that you
+// got from someone else.
+class HomePage extends LitElement {
+    _render(props) {
         return html `
+            <navigation-element></navigation-element>
         `;
     }
 
@@ -38,21 +28,9 @@ class MainApp extends connect(store)(LitElement) {
         };
     }
 
-    constructor() {
-        super();
-    }
-
-    _firstRendered() {
-
-    }
-
-    _didRender() {
-
-    }
-
-    _stateChanged() {
-
+    // This is called every time something is updated in the store.
+    _stateChanged(state) {
     }
 }
 
-window.customElements.define("main-app", MainApp);
+window.customElements.define("home-page", HomePage);
