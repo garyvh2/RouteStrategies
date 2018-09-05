@@ -23,7 +23,6 @@ class NavigationComponent extends LitElement {
             .navigation {
                 font-family: 'Lato', sans-serif;
                 width: 300px;
-                padding: 10%;
                 height: 100%;
                 display: block;
                 margin: 0 auto;
@@ -41,16 +40,20 @@ class NavigationComponent extends LitElement {
                 border: 0.5px solid #888;
                 width: 40%;
             }
+            ::slotted(*) {
+                border-top: 1px solid #333;
+            }
         </style>
         <div class="navigation">
-            <a href="/counter/component">
-                <h2>Counter</h2>
+            <a href="/home">
+                <h2>home</h2>
             </a>
             <hr>
-            <a href="#">
-                <h2>Todo</h2>
+            <a href="/counters/counter">
+                <h2>Counter</h2>
             </a>
         </div>
+        <slot></slot>
     `;
     }
 
