@@ -1,5 +1,5 @@
 export default [{
-    path: "/home",
+    path: "/",
     component: "home-page",
     action: () => {
         import("./pages/home.page.js")

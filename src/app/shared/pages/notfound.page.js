@@ -3,9 +3,9 @@
 import { LitElement, html } from "@polymer/lit-element";
 
 // Import shared styles
-import { SharedStyles } from "../../../shared/styles/shared-styles";
+import { SharedStyles } from "../styles/shared-styles"
 
-class Page404 extends LitElement {
+class NotFoundPage extends LitElement {
     constructor() { super(); }
 
     _render(props) {
@@ -21,4 +21,4 @@ class Page404 extends LitElement {
     }
 }
 
-window.customElements.define("404-page", Page404);
+window.customElements.define("not-found-page", NotFoundPage);

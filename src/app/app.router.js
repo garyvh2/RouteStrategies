@@ -5,7 +5,7 @@ import "./shared/components/navigation.component";
 
 export function loadRoutes () {
     addRoutes([{
-        path: "/",
+        path: "/home",
         component: "navigation-component",
         children: () => import("./modules/content/content.routes.js").then(module => module.default)
     },{
@@ -13,12 +13,12 @@ export function loadRoutes () {
         component: "navigation-component",
         children: () => import("./modules/counter/counter.routes.js").then(module => module.default)
     },{
-        path: "(.*)",
+        path: "/(.*)",
         component: "navigation-component",
-        children: [{
-            component: "404-page",
+        children: [{        
+            component: "not-found-page",
             action: () => {
-                import("./shared/pages/404.page.js")
+                import("./shared/pages/notfound.page.js")
             }
         }]
     }]);

@@ -6,7 +6,7 @@ import { connect } from "pwa-helpers/connect-mixin";
 // App Store
 import { store } from "../../../app.store";
 // Actions
-import { Actions, Counter } from "../duck/index";
+import { Actions, Counter } from "../duck";
 store.addReducers({
     Counter
 });
