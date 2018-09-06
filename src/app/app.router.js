@@ -13,9 +13,14 @@ export function loadRoutes () {
         component: "navigation-component",
         children: () => import("./modules/counter/counter.routes.js").then(module => module.default)
     },{
+        path: "/shop",
+        component: "navigation-component",
+        children: () => import("./modules/shop/shop.routes.js").then(module => module.default)
+    },{
         path: "/(.*)",
         component: "navigation-component",
         children: [{        
+            path: "/(.*)",
             component: "not-found-page",
             action: () => {
                 import("./shared/pages/notfound.page.js")

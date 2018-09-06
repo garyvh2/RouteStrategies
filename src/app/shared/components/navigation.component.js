@@ -12,11 +12,17 @@ import {
     LitElement,
     html
 } from "@polymer/lit-element";
+// Redux Story Connect Mixin
+import { connect } from "pwa-helpers/connect-mixin";
+// App Store
+import { goBack } from "../../routes/duck/actions";
+import { store } from "../../app.store";
+
 
 // This is a reusable element. It is not connected to the store. You can
 // imagine that it could just as well be a third-party element that you
 // got from someone else.
-class NavigationComponent extends LitElement {
+class NavigationComponent extends connect(store)(LitElement) {
     _render(props) {
         return html `
         <style>
@@ -52,6 +58,11 @@ class NavigationComponent extends LitElement {
             <a href="/counters/counter">
                 <h2>Counter</h2>
             </a>
+            <hr>
+            <a href="/shop/shop">
+                <h2>Shop</h2>
+            </a>
+            <button onclick="${() => store.dispatch(goBack())}">Back</button>
         </div>
         <slot></slot>
     `;

@@ -7,7 +7,7 @@ import { connect } from "pwa-helpers/connect-mixin";
 import { store } from "./app.store";
 
 // =========== Route Management ===========
-import "./routes/router-component";
+import "./routes/router.component";
 import { init } from "./routes/router";
 import { loadRoutes } from "./app.router";
 

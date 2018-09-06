@@ -13,3 +13,7 @@ export function addRoutes (routes) {
 export function getRoutes () {
     router.getRoutes();   
 }
+
+export function popState () {
+    window.dispatchEvent(new PopStateEvent('popstate'));
+}
