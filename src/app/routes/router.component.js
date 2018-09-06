@@ -1,18 +1,9 @@
 // ======= Component Base Elements =======
 // LIT-HTML/Element
 import { LitElement, html } from "@polymer/lit-element";
-// Redux Story Connect Mixin
-import { connect } from "pwa-helpers/connect-mixin";
-// App Store
-import { store } from "./app.store";
-
-// =========== Route Management ===========
-import "./routes/router.component";
-import { init } from "./routes/router";
-import { loadRoutes } from "./app.router";
 
 // ======= Main Element Definition =======
-class AppMain extends connect(store)(LitElement) {
+class RouterOutlet extends LitElement {
     constructor() { super(); }
 
     // Element properties mapping
@@ -24,7 +15,7 @@ class AppMain extends connect(store)(LitElement) {
     // First time and re-render funtion
     _render() {
         return html `
-            <router-outlet></router-outlet>
+            <slot></slot>
         `;
     }
 
@@ -49,15 +40,6 @@ class AppMain extends connect(store)(LitElement) {
      * @param _prevProps Previous element properties
      */
     _didRender() {
-        init(this.shadowRoot.querySelector("router-outlet"));
-        loadRoutes()
-    }
-
-    /**
-     * This is called every time something is updated in the store.
-     */
-    _stateChanged() {
-
     }
 }
-customElements.define("app-main", AppMain);
+customElements.define("router-outlet", RouterOutlet);

@@ -1,37 +1,49 @@
-import {
-    createStore,
-    compose as origCompose,
-    applyMiddleware,
-    combineReducers
-} from "redux";
-
-import {
-    lazyReducerEnhancer
-} from "pwa-helpers/lazy-reducer-enhancer";
-
+// ========== Redux Utils ==========
+import { createStore, compose as origCompose, applyMiddleware, combineReducers } from "redux";
+// =========== PWA Utils ===========
+import { lazyReducerEnhancer } from "pwa-helpers/lazy-reducer-enhancer";
+// ======= Redux Middlewares =======
+// => Redux Saga
 import createSagaMiddleware from "redux-saga";
-import GlobalReducers from "./shared/duck/reducers";
-
-// Sets up a Chrome extension for time travel debugging.
-// See https://github.com/zalmoxisus/redux-devtools-extension for more information.
-const compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || origCompose;
-
-// Initializes the Redux store with a lazyReducerEnhancer (so that you can
-// lazily add reducers after the store has been created) and redux-thunk (so
-// that you can dispatch async actions). See the "Redux and state management"
-// section of the wiki for more details:
-// https://github.com/Polymer/pwa-starter-kit/wiki/4.-Redux-and-state-management
-
-// create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
+// => Redux Thunk
+import thunk from 'redux-thunk';
+// => Redux Routing First
+import { routerReducer, routerMiddleware, startListener, createBrowserHistory, push } from "./routes/duck/index";
+const history = createBrowserHistory();
+const router = routerMiddleware(history);
+// ======== Global Resources =======
+import GlobalReducers from "./shared/duck/reducers";
+//import { onLocationChanged } from "./utils/history";
+
+// == Store Enhancers Composition ==
+const compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || origCompose;
 
 export const store = createStore(
     (state, action) => state,
-    compose(lazyReducerEnhancer(combineReducers),
-        applyMiddleware(sagaMiddleware))
+    compose(
+        lazyReducerEnhancer(combineReducers), 
+        applyMiddleware(thunk, router, sagaMiddleware)
+    )
 );
 
-// Initially loaded reducers.
+
+// ===== Add Global Components =====
 store.addReducers({
-    GlobalReducers
+    GlobalReducers,
+    router: routerReducer
 });
+
+// ==== Attach Global Listeners ====
+// Routing Management
+startListener(history, store);
+let currentLocation = store.getState().router.pathname
+let unsubscribe = store.subscribe(() => {
+    let previousLocation = currentLocation
+    currentLocation = store.getState().router.pathname
+
+    if (previousLocation !== currentLocation) {
+        console.log(`Location changed from ${previousLocation} to ${currentLocation}`)
+        // Render your application reactively here (optionally using a compatible router)
+    }
+})
