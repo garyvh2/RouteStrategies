@@ -4,6 +4,11 @@
 import { html } from "@polymer/lit-element";
 
 /**
+ * Component Importings
+ */
+import "@vaadin/vaadin-icons"
+
+/**
  * Component Style Importings
  */
 import ViewStyle from "./style";
@@ -19,11 +24,11 @@ export default function () {
 
             <vaadin-button>
                 <span>Prefix</span>
-                <iron-icon icon="add" slot="prefix"></iron-icon>
+                <iron-icon icon="vaadin:plus" slot="prefix"></iron-icon>
             </vaadin-button>
             <vaadin-button>
                 <span>Suffix</span>
-                <iron-icon icon="chevron-right" slot="suffix"></iron-icon>
+                <iron-icon icon="vaadin:angle-down" slot="suffix"></iron-icon>
             </vaadin-button>
 
             <h5>Outlined</h5>
@@ -33,11 +38,11 @@ export default function () {
 
             <vaadin-button theme="outlined">
                 <span>Prefix</span>
-                <iron-icon icon="add" slot="prefix"></iron-icon>
+                <iron-icon icon="vaadin:plus" slot="prefix"></iron-icon>
             </vaadin-button>
             <vaadin-button theme="outlined">
                 <span>Suffix</span>
-                <iron-icon icon="chevron-right" slot="suffix"></iron-icon>
+                <iron-icon icon="vaadin:angle-down" slot="suffix"></iron-icon>
             </vaadin-button>
 
             <h5>Contained</h5>
@@ -47,11 +52,11 @@ export default function () {
 
             <vaadin-button theme="contained">
                 <span>Prefix</span>
-                <iron-icon icon="add" slot="prefix"></iron-icon>
+                <iron-icon icon="vaadin:plus" slot="prefix"></iron-icon>
             </vaadin-button>
             <vaadin-button theme="contained">
                 <span>Suffix</span>
-                <iron-icon icon="chevron-right" slot="suffix"></iron-icon>
+                <iron-icon icon="vaadin:angle-down" slot="suffix"></iron-icon>
             </vaadin-button>
         </section>
         <section>
