@@ -11,6 +11,12 @@ import "./routes/router.component";
 import { init } from "./routes/router";
 import { loadRoutes } from "./app.router";
 
+// =========== Theme Management ===========
+// Material Theme
+import { Material, LightTheme } from "./shared/styles/material-theme";
+// Custom colors
+import { Colors } from "./shared/styles/colors";
+
 // ======= Main Element Definition =======
 class AppMain extends connect(store)(LitElement) {
     constructor() { super(); }
@@ -24,6 +30,9 @@ class AppMain extends connect(store)(LitElement) {
     // First time and re-render funtion
     _render() {
         return html `
+            ${Material}
+            ${LightTheme}
+            ${Colors}
             <router-outlet></router-outlet>
         `;
     }
