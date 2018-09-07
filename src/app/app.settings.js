@@ -1,10 +1,5 @@
-const ENV = {
-    DEV: "DEV",
-    PROD: "PRODUCTION",
-    BUILD: "BUILD",
-    STAGE: "STAGE"
-};
-
+/**
+ * Site Configuration Settings
+ */
 export const SETTINGS = {
-    env: ENV.DEV
 };

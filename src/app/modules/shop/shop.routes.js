@@ -1,13 +1,13 @@
 export default [{
     path: "/shop",
-    component: "shop-page",
+    component: "shop-view",
     action: () => {
-        import("./pages/shop.page.js")
+        import("./views/shop/view.js")
     }
 },{
     path: "/(.*)",  
-    component: "not-found-page",
+    component: "not-found-view",
     action: () => {
-        import("../../shared/pages/notfound.page.js")
+        import("../../shared/views/notfound/view.js")
     }
 }]

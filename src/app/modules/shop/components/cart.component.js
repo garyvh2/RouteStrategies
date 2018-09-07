@@ -1,26 +1,34 @@
-// ======= Component Base Elements =======
-// LIT-HTML/Element
+/**
+ * Component Base Elements
+ */
 import { LitElement, html } from "@polymer/lit-element";
-// Redux Story Connect Mixin
 import { connect } from "pwa-helpers/connect-mixin";
-// App Store
+
+/**
+ * Redux Components
+ */
 import { store } from "../../../app.store";
+import { Operations, Selectors  } from "../@redux";
 
-// Actions
-import { Operations, Selectors  } from "../duck";
+/**
+ * Component Style Importings
+ */
+import { removeFromCartIcon } from "../../../shared/styles/icons";
 
-// ========= Compoment Importings =========
-import { ButtonSharedStyles } from "../../../shared/styles/button-shared-styles";
-import { removeFromCartIcon } from "../../../shared/icons";
+/**
+ * Component Importings
+ */
 import "./item.component";
 
+/**
+ * Element Definition
+ */
 class ShopCart extends connect(store)(LitElement) {
     _render({
         _items,
         _total
     }) {
         return html `
-          ${ButtonSharedStyles}
           <style>
             :host { display: block; }
           </style>
@@ -29,12 +37,12 @@ class ShopCart extends connect(store)(LitElement) {
             html`
               <div>
                 <shop-item name="${item.title}" amount="${item.amount}" price="${item.price}"></shop-item>
-                <button
+                <vaadin-button
                     on-click="${(e) => store.dispatch(Operations.removeFromCart(e.currentTarget.dataset['index']))}"
                     data-index$="${item.id}"
                     title="Remove from cart">
                   ${removeFromCartIcon}
-                </button>
+                </vaadin-button>
               </div>
             `
           )}

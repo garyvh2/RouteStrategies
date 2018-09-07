@@ -1,38 +1,57 @@
-// ======= Component Base Elements =======
-// LIT-HTML/Element
+/**
+ * Component Base Elements
+ */
 import { LitElement, html } from "@polymer/lit-element";
-// Redux Story Connect Mixin
 import { connect } from "pwa-helpers/connect-mixin";
-// App Store
+
+/**
+ * Redux Components
+ */
 import { store } from "./app.store";
 
-// =========== Route Management ===========
-import "./routes/router.component";
-import { init } from "./routes/router";
+/**
+ * Route Management
+ */
+import { init } from "./utils/routerHelpers";
 import { loadRoutes } from "./app.router";
 
-// =========== Theme Management ===========
-// Material Theme
-import { Material, LightTheme } from "./shared/styles/material-theme";
-// Custom colors
-import { Colors } from "./shared/styles/colors";
 
-// ======= Main Element Definition =======
+/**
+ * Component Style Importings
+ */
+import { Material, LightTheme } from "./shared/styles/material-theme";
+import { Colors } from "./shared/styles/colors";
+import SharedStyles from "./shared/styles/shared-styles";
+
+/**
+ * Component Importings
+ */
+import "./shared/components/router.component";
+
+
+/**
+ * Main Element Definition
+ */
 class AppMain extends connect(store)(LitElement) {
     constructor() { super(); }
 
-    // Element properties mapping
+    /**
+     * Element properties mapping
+     */
     static get properties() {
         return {
         };
     }
-
-    // First time and re-render funtion
+    
+    /**
+     * First time and re-render funtion
+     */
     _render() {
         return html `
             ${Material}
             ${LightTheme}
             ${Colors}
+            ${SharedStyles}
             <router-outlet></router-outlet>
         `;
     }
@@ -64,6 +83,7 @@ class AppMain extends connect(store)(LitElement) {
 
     /**
      * This is called every time something is updated in the store.
+     * @param state current state changed
      */
     _stateChanged() {
 

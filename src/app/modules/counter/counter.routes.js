@@ -1,13 +1,13 @@
 export default [{
     path: "/counter",
-    component: "counter-page",
+    component: "counter-view",
     action: () => {
-        import("./pages/counter.page.js")
+        import("./views/counter/view.js")
     }
 },{
     path: "/(.*)",  
-    component: "not-found-page",
+    component: "not-found-view",
     action: () => {
-        import("../../shared/pages/notfound.page.js")
+        import("../../shared/views/notfound/view.js")
     }
 }]

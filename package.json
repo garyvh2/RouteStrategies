@@ -27,6 +27,7 @@
     "@vaadin/router": "^1.1.0",
     "@vaadin/vaadin-button": "^2.1.0",
     "@vaadin/vaadin-material-styles": "^1.1.2",
+    "@vaadin/vaadin-tabs": "^2.1.0",
     "@vaadin/vaadin-text-field": "^2.1.2",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "pwa-helpers": "^0.8.2",

@@ -1,28 +1,35 @@
-// ======= Component Base Elements =======
-// LIT-HTML/Element
+/**
+ * Component Base Elements
+ */
 import { LitElement, html } from "@polymer/lit-element";
 
-import { plusIcon, minusIcon } from "../../../shared/icons";
+/**
+ * Component Style Importings
+ */
+import { plusIcon, minusIcon } from "../../../shared/styles/icons";
 
-
-// ========= Compoment Importings =========
-import { ButtonSharedStyles } from "../../../shared/styles/button-shared-styles";
-
+/**
+ * Element Definition
+ */
 class CounterElement extends LitElement {
     _render(props) {
         return html `
-        ${ButtonSharedStyles}
-        <style>
-          span { width: 20px; display: inline-block; text-align: center; font-weight: bold;}
-        </style>
-        <div>
-          <p>
-            Clicked: <span>${props.clicks}</span> times.
-            Value is <span>${props.value}</span>.
-            <button on-click="${() => this._onIncrement()}" title="Add 1">${plusIcon}</button>
-            <button on-click="${() => this._onDecrement()}" title="Minus 1">${minusIcon}</button>
-          </p>
-        </div>
+            <style>
+                span { 
+                    width: 20px;
+                    display: inline-block;
+                    text-align: center; 
+                    font-weight: bold;
+                }
+            </style>
+            <div>
+                <p>
+                    Clicked: <span>${props.clicks}</span> times.
+                    Value is <span>${props.value}</span>.
+                    <vaadin-button on-click="${() => this._onIncrement()}" title="Add 1">${plusIcon}</vaadin-button>
+                    <vaadin-button on-click="${() => this._onDecrement()}" title="Minus 1">${minusIcon}</vaadin-button>
+                </p>
+            </div>
       `;
     }
 

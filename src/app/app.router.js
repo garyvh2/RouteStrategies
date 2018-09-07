@@ -1,30 +1,34 @@
-// Router
-import { addRoutes, getRoutes } from "./routes/router";
+/**
+ * Router Helpers
+ */
+import { addRoutes } from "./utils/routerHelpers";
 
+/**
+ * Component Importings
+ */
 import "./shared/components/navigation.component";
 
 export function loadRoutes () {
     addRoutes([{
-        path: "/home",
+        path: "/",
         component: "navigation-component",
-        children: () => import("./modules/content/content.routes.js").then(module => module.default)
-    },{
-        path: "/counters",
-        component: "navigation-component",
-        children: () => import("./modules/counter/counter.routes.js").then(module => module.default)
-    },{
-        path: "/shop",
-        component: "navigation-component",
-        children: () => import("./modules/shop/shop.routes.js").then(module => module.default)
-    },{
-        path: "/(.*)",
-        component: "navigation-component",
-        children: [{        
+        children: [{
+            path: "/content",
+            children: () => import("./modules/content/content.routes.js").then(module => module.default)
+        },{
+            path: "/counters",
+            children: () => import("./modules/counter/counter.routes.js").then(module => module.default)
+        },{
+            path: "/shop",
+            children: () => import("./modules/shop/shop.routes.js").then(module => module.default)
+        },{
             path: "/(.*)",
-            component: "not-found-page",
-            action: () => {
-                import("./shared/pages/notfound.page.js")
-            }
+            children: [{        
+                component: "not-found-view",
+                action: () => {
+                    import("./shared/views/notfound/view.js")
+                }
+            }]
         }]
     }]);
 }
