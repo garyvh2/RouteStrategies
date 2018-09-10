@@ -26,10 +26,10 @@
         "minify": true
       },
       "bundle": true,
-      "sourcemaps": true,
       "addServiceWorker": true
     }
   ],
+  "sourcemaps": true,
   "moduleResolution": "node",
   "npm": true
 }
